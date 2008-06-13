@@ -1,0 +1,42 @@
+8
+
+dir
+39
+http://oliver.ficonab.com/svn2/rails/bws/lib
+http://oliver.ficonab.com/svn2/rails
+
+
+
+2007-09-13T09:22:02.187742Z
+23
+
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+ceeaca9f-745c-46d7-b156-2271164c1546
+
+billing_web_service.rb
+file
+
+
+
+
+2007-09-19T06:30:50.000000Z
+a1d551f0fe1e3189d70b61ab8656dd6c
+2007-09-13T09:22:02.187742Z
+23
+
+billing_web_service
+dir
+

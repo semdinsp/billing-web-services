@@ -1,0 +1,67 @@
+require 'yaml'
+require 'rubygems'
+gem 'stomp'
+require 'stomp'
+gem 'stomp_message'
+require 'stomp_message'
+# This sends the sms to a activemq topic
+module BillingWebService
+class BillingSendTopic < StompMessage::StompSendTopic
+  attr_accessor :result, :a_hash
+  #need to define topic, host properly
+  @@TOPIC='/topic/credit'
+  # must be defined as method in sms_listener
+  @@STOMP_SMS_MESSAGE='stomp_SMS'
+ def initialize(options={})
+   # set up variables using hash
+    options[:topic] =   options[:topic]==nil ? @@TOPIC : options[:topic]  
+    super(options)
+    a_hash=options
+    self.result=false
+  end
+  def action(msisdn, value, type,arg_hash, tim=20)
+        m=BillingWebService::BillingMessage.new("stomp_BILLING",'responsetopic', 
+                                       msisdn,type, value)
+
+      # billing_sender.send_topic(m.body,  arg_hash[:msisdn]) 
+      # m=StompMessage::Message.new('stomp_BILLING', msg)
+      #  billing_sender.setup_auto_close
+       timeout=tim
+       arg_hash= {} if arg_hash==nil
+        msg_received_flag =false
+        result=false
+        puts "Billing Send topic #{msisdn} #{value} #{type}"
+       self.send_topic_acknowledge(m,arg_hash,timeout-1)  {   |msg| # puts 'in handle action block' 
+                                puts "MESSAGE RECEIVED ---- #{msg.to_s} "
+                                msg_received_flag=true
+                                m=StompMessage::Message.load_xml(msg)
+                                result=m.body
+                              #  puts "result is #{result}"
+                                result
+                                 }
+                            begin
+                           Timeout::timeout(timeout) {
+                                 while true  
+                                    putc '.'
+                                    break if msg_received_flag
+                                    sleep(1)
+                                    end  }
+                              rescue SystemExit
+                              rescue Timeout::Error
+                              rescue Exception => e
+                               puts "exception #{e.message} class: #{e.class}"
+                               puts  "no receipt"
+                              end
+           # puts "result is now #{result}"
+            result
+  end
+
+  def credit(msisdn,value, headers={})
+         action(msisdn,value,'topup',headers, 20)
+  end #send_sms
+  def debit(msisdn,value, headers={})
+         action(msisdn,value,'debit_account',headers,20)
+  end #send_sms
+ 
+end #class
+end #module

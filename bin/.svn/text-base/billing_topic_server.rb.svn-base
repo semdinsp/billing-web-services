@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require 'optparse'
+def usage
+    puts "Usage: billing_topic_server.rb to start up listener " 
+   exit
+end
+
+require 'rubygems'
+gem 'billing_web_service'
+require 'billing_web_service'
+
+    puts "Starting topic server:"
+  #  begin
+      BillingWebService::BillingServer.new({:topic => '/topic/credit', :thread_count => '4'}).run
+   #   sms_listener.join
+   # rescue Exception => e
+      puts "exception found #{e.backtrace}" 
+  #  end
+   
+    

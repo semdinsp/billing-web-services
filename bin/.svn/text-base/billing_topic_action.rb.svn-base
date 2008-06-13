@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+#!/usr/bin/env ruby
+# == Synopsis
+#   bill topic action, send message to sdp for billing
+# == Usage
+#   Usage: billing_topic_action.rb -A  action -T topic -m msisdn     -d
+# topic should be /topic/credit  action can be one of get_account_details, topup, debit_account, get_usage_details
+# == Useful commands
+# billing_topic_action.rb -T '/topic/credit' -A get_account_details -m 639993130030
+#  billing_topic_action.rb -T '/topic/credit' -A topup -m 639993130030 -v 10
+# == Author
+#   Scott Sproule  --- Ficonab.com (scott.sproule@ficonab.com)
+# == Copyright
+#    Copyright (c) 2007 Ficonab Pte. Ltd.
+#     See license for license details
+  
+   require 'optparse'
+   require 'rubygems'
+   gem 'stomp_message'
+   require 'stomp_message'
+   require 'rdoc/usage'
+require 'optparse'
+  arg_hash=StompMessage::Options.parse_options(ARGV)
+  flag =  arg_hash[:msisdn]!=nil || arg_hash[:account] != nil
+  RDoc::usage if   !flag || arg_hash[:help]==true  || arg_hash[:topic]==nil
+#gem 'soap4r'
+#require 'soap4r'
+gem 'billing_web_service'
+require 'billing_web_service'
+
+# @argontemp=BillingWebService::Argon::ArgonWebServiceClient.new('http://svbilling:9999/cureWS/services?wsdl')
+#puts "ENV #{ENV}"
+#puts "Argv is: #{ARGV}  argv.size is #{ARGV.size}"
+   # puts "get account details"
+  # begin
+  #begin
+     billing_sender=StompMessage::StompSendTopic.new(arg_hash)   
+     m=BillingWebService::BillingMessage.new("stomp_BILLING",'responsetopic', 
+                                     arg_hash[:msisdn],arg_hash[:action], arg_hash[:value])
+    
+    # billing_sender.send_topic(m.body,  arg_hash[:msisdn]) 
+    # m=StompMessage::Message.new('stomp_BILLING', msg)
+      billing_sender.setup_auto_close
+      msg_received_flag =false
+     billing_sender.send_topic_acknowledge(m, arg_hash, 20)  {  |msg|
+                
+                         puts 'MESSAGE RECEIVED ----'
+                         msg_received_flag=true
+                         puts "handle action block msg is #{msg.to_s}"  }
+                                 begin
+                                  Timeout::timeout(20) {
+                                    while true  
+                                   puts "---waiting for message"
+                                   exit(0) if msg_received_flag
+                                   sleep(1)
+                                   end  }
+                                   rescue SystemExit
+
+                                   rescue Exception => e
+                                    puts "exception #{e.message} class: #{e.class}"
+                                    puts  "no receipt"
+                    
+                                     end
+     
+     
+     
+   
+   #  t=Thread.new  { 
+      #     loop {      sleep(3) }   
+       #                }
+   #  t.join
+  #rescue Exception => e
+   #  puts "exception found #{e.backtrace}" 
+ # end
+    
+#puts "Argv is: #{ARGV}  argv.size is #{ARGV.size}"   
+  

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn2/rails/!svn/ver/23/bws/lib/billing_web_service
+END
+billing_system.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn2/rails/!svn/ver/64/bws/lib/billing_web_service/billing_system.rb
+END
+billing_message.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn2/rails/!svn/ver/100/bws/lib/billing_web_service/billing_message.rb
+END
+version.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn2/rails/!svn/ver/220/bws/lib/billing_web_service/version.rb
+END
+argon.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn2/rails/!svn/ver/220/bws/lib/billing_web_service/argon.rb
+END
+billing_server.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn2/rails/!svn/ver/220/bws/lib/billing_web_service/billing_server.rb
+END
+billing_send_topic.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn2/rails/!svn/ver/212/bws/lib/billing_web_service/billing_send_topic.rb
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn2/rails/!svn/ver/23/bws/wsdl
+END
+makewsdl.sh
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn2/rails/!svn/ver/23/bws/wsdl/makewsdl.sh
+END
+defaultDriver.rb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn2/rails/!svn/ver/23/bws/wsdl/defaultDriver.rb
+END
+ArgonWebServiceClient.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn2/rails/!svn/ver/23/bws/wsdl/ArgonWebServiceClient.rb
+END
+default.rb
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn2/rails/!svn/ver/23/bws/wsdl/default.rb
+END
+defaultMappingRegistry.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn2/rails/!svn/ver/23/bws/wsdl/defaultMappingRegistry.rb
+END

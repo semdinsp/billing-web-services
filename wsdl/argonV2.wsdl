@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://ws.argon.seer.com"
+	xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"
+	xmlns:ns1="http://dto.components.argon.seer.com"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding"
+	xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	targetNamespace="http://ws.argon.seer.com">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://ws.argon.seer.com"
+			elementFormDefault="qualified" attributeFormDefault="qualified">
+			<xsd:element name="updateAccountCreditLimit">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in0" type="xsd:long"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in1" type="xsd:double"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in2" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="updateAccountCreditLimitResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out"
+							type="ns1:AcknowledgementDTO" nillable="true" minOccurs="1"
+							maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+
+			</xsd:element>
+			<xsd:element name="getAccountNumber">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in0" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getAccountNumberResponse">
+
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="autoLoad">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in0" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in1" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in2" type="xsd:double"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in3" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="autoLoadResponse">
+				<xsd:complexType>
+
+					<xsd:sequence>
+						<xsd:element name="out" type="ns1:ResponseDTO"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="availableDenominations">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in0" type="xsd:long"
+							minOccurs="1" maxOccurs="1" />
+
+						<xsd:element name="in1" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="availableDenominationsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out"
+							type="ns1:AvailableDenominationsResponseDTO" nillable="true"
+							minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="load">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in0" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in1" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in2" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="loadResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="ns1:ResponseDTO"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="dispensePin">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in0" type="xsd:int"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in1" type="xsd:int"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in2" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="dispensePinResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="ns1:ResponseDTO"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getAccountDetails">
+				<xsd:complexType>
+
+					<xsd:sequence>
+						<xsd:element name="in0" type="xsd:long"
+							minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getAccountDetailsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="ns1:AccountDTO"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="balanceInquiry">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in0" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in1" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="balanceInquiryResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out"
+							type="ns1:BalanceInquiryResponseDTO" nillable="true"
+							minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="debitAccount">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in0" type="xsd:long"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in1" type="xsd:double"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in2" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="debitAccountResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out"
+							type="ns1:AcknowledgementDTO" nillable="true" minOccurs="1"
+							maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="topup">
+				<xsd:complexType>
+
+					<xsd:sequence>
+						<xsd:element name="in0" type="xsd:long"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in1" type="xsd:double"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in2" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="topupResponse">
+				<xsd:complexType>
+
+					<xsd:sequence>
+						<xsd:element name="out"
+							type="ns1:AcknowledgementDTO" nillable="true" minOccurs="1"
+							maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="pasaLoad">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in0" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+
+						<xsd:element name="in1" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in2" type="xsd:double"
+							minOccurs="1" maxOccurs="1" />
+						<xsd:element name="in3" type="xsd:string"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="pasaLoadResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="out" type="ns1:ResponseDTO"
+							nillable="true" minOccurs="1" maxOccurs="1" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+		<xsd:schema
+			targetNamespace="http://dto.components.argon.seer.com"
+			elementFormDefault="qualified" attributeFormDefault="qualified">
+			<xsd:complexType name="AcknowledgementDTO">
+				<xsd:sequence>
+					<xsd:element name="accountNumber" type="xsd:long"
+						minOccurs="0" />
+
+					<xsd:element name="remarks" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="successful" type="xsd:boolean"
+						minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ResponseDTO">
+				<xsd:sequence>
+					<xsd:element name="code" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="remarks" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="result" type="xsd:string"
+						minOccurs="0" nillable="true" />
+
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AvailableDenominationsResponseDTO">
+				<xsd:sequence>
+					<xsd:element name="code" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="denominations"
+						type="ns1:ArrayOfDenominationDTO" minOccurs="0" nillable="true" />
+					<xsd:element name="remarks" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="result" type="xsd:string"
+						minOccurs="0" nillable="true" />
+				</xsd:sequence>
+
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfDenominationDTO">
+				<xsd:sequence>
+					<xsd:element name="DenominationDTO"
+						type="ns1:DenominationDTO" nillable="true" minOccurs="0"
+						maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DenominationDTO">
+				<xsd:sequence>
+					<xsd:element name="denomination" type="xsd:int"
+						minOccurs="0" />
+
+					<xsd:element name="pins" type="xsd:int"
+						minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AccountDTO">
+				<xsd:sequence>
+					<xsd:element name="VTigerID" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="accountNumber" type="xsd:long"
+						minOccurs="0" />
+					<xsd:element name="balance" type="xsd:double"
+						minOccurs="0" />
+					<xsd:element name="creditLimit" type="xsd:double"
+						minOccurs="0" />
+
+					<xsd:element name="currentUsage" type="xsd:double"
+						minOccurs="0" />
+					<xsd:element name="imsi" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="msisdn" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="productName" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="remarks" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="status" type="xsd:string"
+						minOccurs="0" nillable="true" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="BalanceInquiryResponseDTO">
+
+				<xsd:sequence>
+					<xsd:element name="bucketList"
+						type="ns1:ArrayOfBucketDTO" minOccurs="0" nillable="true" />
+					<xsd:element name="code" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="remarks" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="result" type="xsd:string"
+						minOccurs="0" nillable="true" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfBucketDTO">
+				<xsd:sequence>
+
+					<xsd:element name="BucketDTO" type="ns1:BucketDTO"
+						nillable="true" minOccurs="0" maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="BucketDTO">
+				<xsd:sequence>
+					<xsd:element name="bucket" type="xsd:string"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="denomination" type="xsd:decimal"
+						minOccurs="0" nillable="true" />
+					<xsd:element name="validity" type="xsd:dateTime"
+						minOccurs="0" />
+				</xsd:sequence>
+
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<message name="updateAccountCreditLimitRequest">
+		<part name="parameters" element="tns:updateAccountCreditLimit" />
+	</message>
+	<message name="updateAccountCreditLimitResponse">
+		<part name="parameters"
+			element="tns:updateAccountCreditLimitResponse" />
+	</message>
+
+	<message name="getAccountNumberRequest">
+		<part name="parameters" element="tns:getAccountNumber" />
+	</message>
+	<message name="getAccountNumberResponse">
+		<part name="parameters" element="tns:getAccountNumberResponse" />
+	</message>
+	<message name="autoLoadRequest">
+		<part name="parameters" element="tns:autoLoad" />
+	</message>
+
+	<message name="autoLoadResponse">
+		<part name="parameters" element="tns:autoLoadResponse" />
+	</message>
+	<message name="availableDenominationsRequest">
+		<part name="parameters" element="tns:availableDenominations" />
+	</message>
+	<message name="availableDenominationsResponse">
+		<part name="parameters"
+			element="tns:availableDenominationsResponse" />
+	</message>
+
+	<message name="loadRequest">
+		<part name="parameters" element="tns:load" />
+	</message>
+	<message name="loadResponse">
+		<part name="parameters" element="tns:loadResponse" />
+	</message>
+	<message name="dispensePinRequest">
+		<part name="parameters" element="tns:dispensePin" />
+	</message>
+
+	<message name="dispensePinResponse">
+		<part name="parameters" element="tns:dispensePinResponse" />
+	</message>
+	<message name="getAccountDetailsRequest">
+		<part name="parameters" element="tns:getAccountDetails" />
+	</message>
+	<message name="getAccountDetailsResponse">
+		<part name="parameters" element="tns:getAccountDetailsResponse" />
+	</message>
+
+	<message name="balanceInquiryRequest">
+		<part name="parameters" element="tns:balanceInquiry" />
+	</message>
+	<message name="balanceInquiryResponse">
+		<part name="parameters" element="tns:balanceInquiryResponse" />
+	</message>
+	<message name="debitAccountRequest">
+		<part name="parameters" element="tns:debitAccount" />
+	</message>
+
+	<message name="debitAccountResponse">
+		<part name="parameters" element="tns:debitAccountResponse" />
+	</message>
+	<message name="topupRequest">
+		<part name="parameters" element="tns:topup" />
+	</message>
+	<message name="topupResponse">
+		<part name="parameters" element="tns:topupResponse" />
+	</message>
+
+	<message name="pasaLoadRequest">
+		<part name="parameters" element="tns:pasaLoad" />
+	</message>
+	<message name="pasaLoadResponse">
+		<part name="parameters" element="tns:pasaLoadResponse" />
+	</message>
+	<portType name="ArgonWebServicePortType">
+		<operation name="updateAccountCreditLimit">
+			<input name="updateAccountCreditLimitRequest"
+				message="tns:updateAccountCreditLimitRequest" />
+
+			<output name="updateAccountCreditLimitResponse"
+				message="tns:updateAccountCreditLimitResponse" />
+		</operation>
+		<operation name="getAccountNumber">
+			<input name="getAccountNumberRequest"
+				message="tns:getAccountNumberRequest" />
+			<output name="getAccountNumberResponse"
+				message="tns:getAccountNumberResponse" />
+		</operation>
+		<operation name="autoLoad">
+			<input name="autoLoadRequest" message="tns:autoLoadRequest" />
+			<output name="autoLoadResponse"
+				message="tns:autoLoadResponse" />
+
+		</operation>
+		<operation name="availableDenominations">
+			<input name="availableDenominationsRequest"
+				message="tns:availableDenominationsRequest" />
+			<output name="availableDenominationsResponse"
+				message="tns:availableDenominationsResponse" />
+		</operation>
+		<operation name="load">
+			<input name="loadRequest" message="tns:loadRequest" />
+			<output name="loadResponse" message="tns:loadResponse" />
+		</operation>
+
+		<operation name="dispensePin">
+			<input name="dispensePinRequest"
+				message="tns:dispensePinRequest" />
+			<output name="dispensePinResponse"
+				message="tns:dispensePinResponse" />
+		</operation>
+		<operation name="getAccountDetails">
+			<input name="getAccountDetailsRequest"
+				message="tns:getAccountDetailsRequest" />
+			<output name="getAccountDetailsResponse"
+				message="tns:getAccountDetailsResponse" />
+		</operation>
+		<operation name="balanceInquiry">
+
+			<input name="balanceInquiryRequest"
+				message="tns:balanceInquiryRequest" />
+			<output name="balanceInquiryResponse"
+				message="tns:balanceInquiryResponse" />
+		</operation>
+		<operation name="debitAccount">
+			<input name="debitAccountRequest"
+				message="tns:debitAccountRequest" />
+			<output name="debitAccountResponse"
+				message="tns:debitAccountResponse" />
+		</operation>
+		<operation name="topup">
+			<input name="topupRequest" message="tns:topupRequest" />
+
+			<output name="topupResponse" message="tns:topupResponse" />
+		</operation>
+		<operation name="pasaLoad">
+			<input name="pasaLoadRequest" message="tns:pasaLoadRequest" />
+			<output name="pasaLoadResponse"
+				message="tns:pasaLoadResponse" />
+		</operation>
+	</portType>
+	<binding name="ArgonWebServiceHttpBinding"
+		type="tns:ArgonWebServicePortType">
+		<wsdlsoap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<operation name="updateAccountCreditLimit">
+			<wsdlsoap:operation soapAction="" />
+			<input name="updateAccountCreditLimitRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="updateAccountCreditLimitResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+		<operation name="getAccountNumber">
+			<wsdlsoap:operation soapAction="" />
+			<input name="getAccountNumberRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="getAccountNumberResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+		<operation name="autoLoad">
+			<wsdlsoap:operation soapAction="" />
+			<input name="autoLoadRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="autoLoadResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+		<operation name="availableDenominations">
+			<wsdlsoap:operation soapAction="" />
+			<input name="availableDenominationsRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="availableDenominationsResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+		<operation name="load">
+			<wsdlsoap:operation soapAction="" />
+			<input name="loadRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="loadResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+		<operation name="dispensePin">
+			<wsdlsoap:operation soapAction="" />
+			<input name="dispensePinRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="dispensePinResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+		<operation name="getAccountDetails">
+			<wsdlsoap:operation soapAction="" />
+			<input name="getAccountDetailsRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="getAccountDetailsResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+		<operation name="balanceInquiry">
+			<wsdlsoap:operation soapAction="" />
+			<input name="balanceInquiryRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="balanceInquiryResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+		<operation name="debitAccount">
+			<wsdlsoap:operation soapAction="" />
+			<input name="debitAccountRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="debitAccountResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+		<operation name="topup">
+			<wsdlsoap:operation soapAction="" />
+			<input name="topupRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="topupResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+		<operation name="pasaLoad">
+			<wsdlsoap:operation soapAction="" />
+			<input name="pasaLoadRequest">
+				<wsdlsoap:body use="literal" />
+			</input>
+			<output name="pasaLoadResponse">
+				<wsdlsoap:body use="literal" />
+			</output>
+		</operation>
+
+	</binding>
+	<service name="ArgonWebService">
+		<port name="ArgonWebServiceHttpPort"
+			binding="tns:ArgonWebServiceHttpBinding">
+			<wsdlsoap:address
+				location="http://localhost:8888/cureWS/services" />
+		</port>
+	</service>
+</definitions>
+

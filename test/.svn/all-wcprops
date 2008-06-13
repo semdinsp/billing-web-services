@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn2/rails/!svn/ver/23/bws/test
+END
+test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn2/rails/!svn/ver/23/bws/test/test_helper.rb
+END
+billing_web_service_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn2/rails/!svn/ver/207/bws/test/billing_web_service_test.rb
+END

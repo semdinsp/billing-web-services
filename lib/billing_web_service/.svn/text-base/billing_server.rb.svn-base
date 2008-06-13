@@ -1,0 +1,136 @@
+require 'rubygems'
+gem 'stomp'
+require 'stomp'
+require 'stomp'
+gem 'stomp_message'
+require 'stomp_message'
+module BillingWebService
+class BillingServer < StompMessage::StompServer
+  
+ # attr_accessor :bs
+ 
+  def initialize(options={})
+    super(options)
+   # self.bs=BillingWebService::BillingSystem.new
+    puts "finished initializing"
+  end
+  # def connect_topic
+   #    self.conn.subscribe self.topic, { :ack =>"auto" }
+  # end
+  # name is message command
+  @@TIMEOUT_VAL=15
+  def deduct_value
+  end
+  def timeout_block
+     result = "timeout_block: unknown error"
+     begin
+     Timeout::timeout(@@TIMEOUT_VAL) {
+           result = yield
+      }
+       rescue Timeout::Error
+         result << "#{Thread.current[:name]}: " << 'Timeout calling billing system'
+       end
+      result
+  end
+  def topup(account,value,user)
+       result = timeout_block {
+             ad=Thread.current[:bs].top_up(account,value,user)
+              flag = "#{ad}"
+               result="" << flag
+        }
+     
+  end
+  def debit_account(account,value,user)
+       result = timeout_block  {ad=Thread.current[:bs].debit_account(account,value,user)
+             flag = "#{ad}"
+             result="" << flag}
+   end
+  def get_account_details(account)
+     result = timeout_block {ad=Thread.current[:bs].get_account_details(account)
+      result=""
+      result << " vTigerID: " << ad.vTigerID
+      result <<  " accountNumber: " << ad.accountNumber
+       result <<  " balance: " << ad.balance
+       result <<  " creditLimit: " << ad.creditLimit
+       result <<  " currentUsage: " << ad.currentUsage
+       result <<  " imsi: " << ad.imsi
+      result <<  " msisdn: " << ad.msisdn
+      result <<  " productName: " << ad.productName
+      result <<  " remarks: " << ad.remarks
+      result <<  " status: " << ad.status
+      puts result
+      result}
+  end
+  # override this
+   def stomp_DEBUG(msg,stomp_msg)
+      @debug=!@debug
+      puts "debug flag is now #{@debug}"
+      Thread.current[:bs].debug  #this will on do one thread...should do all.
+   end
+  def get_usage_details(account)
+      result = timeout_block {ad=Thread.current[:bs].get_account_details(account)
+       result=""
+        bal=ad.balance.to_i
+        usage=ad.currentUsage.to_i
+        rem_credit =  ad.creditLimit.to_i - usage
+       #  puts "balance: #{bal} "
+       #  puts "usage: #{usage} "
+         # result <<  "Your account is: " << account << "\n"
+      #     result <<  " balance PhP #{bal} "
+        result <<  " your remaining balance is  PhP #{rem_credit}. \n"
+       puts result
+       result}
+   end
+   def get_account_number(msisdn)    
+         acct=''
+         begin
+         Timeout::timeout(@@TIMEOUT_VAL) {
+               acct=Thread.current[:bs].get_account_number(msisdn)
+          }
+           rescue Timeout::Error
+               puts  "#{Thread.current[:name]}:  Timeout calling billing system"
+           end
+          acct 
+   end
+   def setup_thread_specific_items(mythread_number)
+       super(mythread_number)
+       puts " ----creating billing system manager for #{Thread.current[:name]}"
+       Thread.current[:bs]= BillingWebService::BillingSystem.new
+     end
+  def stomp_BILLING(msg, stomp_msg)
+     # self.conn.acknowledge
+      puts "in stomp Billing message" if @debug
+      puts "#{Thread.current[:name]}: #{Time.now} INCOMING msg xml is #{msg.to_xml} body is #{stomp_msg.body}" #if @debug
+      m=BillingWebService::BillingMessage.load_xml(stomp_msg.body)
+       
+        
+      acct=get_account_number(m.msisdn)
+      puts "account is #{acct} for #{m.msisdn}" if @debug
+      a="unknown action"
+      switch_action=m.action
+       switch_action = "bad_msisdn" if acct==nil || acct==''
+       case switch_action
+        when   "get_account_details"
+          a=get_account_details(acct)
+        when   "get_usage_details"
+          a=get_usage_details(acct)
+        when  "debit_account"
+           a=debit_account(acct, m.value, 'user') 
+        when  "topup"
+            a=topup(acct, m.value, 'user')
+        when "bad_msisdn"  
+            a=" could not retrieve account information for #{m.msisdn}"
+        else
+            a= " invalid action received: #{switch_action}"
+        end
+            
+      puts "#{Thread.current[:name]}: #{Time.now} REPLY before reply action: #{m.action} acct = #{acct} a is #{a}"  
+      reply_msg = StompMessage::Message.new('stomp_REPLY', "#{a}")
+      send_reply(stomp_msg.headers,reply_msg) if stomp_msg.headers['reply-to']!=nil
+      
+    # self.conn.ack  stomp_msg.headers['message-id'], stomp_msg.headers
+    
+  end
+  
+end # billing server
+end #module

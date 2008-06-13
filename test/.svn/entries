@@ -1,0 +1,52 @@
+8
+
+dir
+39
+http://oliver.ficonab.com/svn2/rails/bws/test
+http://oliver.ficonab.com/svn2/rails
+
+
+
+2007-09-13T09:22:02.187742Z
+23
+
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+ceeaca9f-745c-46d7-b156-2271164c1546
+
+test_helper.rb
+file
+
+
+
+
+2007-09-19T06:30:43.000000Z
+a2e494fffc5528f2aae437af0019444b
+2007-09-13T09:22:02.187742Z
+23
+
+billing_web_service_test.rb
+file
+207
+
+
+
+2008-02-05T00:57:30.000000Z
+d01c78873fc7017a8fcbf41917190d72
+2008-02-05T16:24:45.689975Z
+207
+
+has-props
+

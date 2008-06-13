@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn2/rails/!svn/ver/23/bws/bin
+END
+change_credit_limit.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn2/rails/!svn/ver/207/bws/bin/change_credit_limit.rb
+END
+get_account_details.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn2/rails/!svn/ver/207/bws/bin/get_account_details.rb
+END
+get_account_number.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn2/rails/!svn/ver/23/bws/bin/get_account_number.rb
+END
+billing_topic_server.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn2/rails/!svn/ver/212/bws/bin/billing_topic_server.rb
+END
+billing_topic_server_control.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn2/rails/!svn/ver/45/bws/bin/billing_topic_server_control.rb
+END
+topup.rb
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn2/rails/!svn/ver/23/bws/bin/topup.rb
+END
+billing_topic_action.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn2/rails/!svn/ver/207/bws/bin/billing_topic_action.rb
+END

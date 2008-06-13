@@ -1,0 +1,32 @@
+# basic format for stomp messages
+require 'rexml/document'
+require 'rubygems'
+gem 'stomp_message'
+require 'stomp_message'
+module BillingWebService
+	class BillingMessage < StompMessage::Message
+	  attr_accessor :response_topic, :msisdn, :action, :value
+	  def initialize(cmd, response,dn,action, value)
+	    self.action = action
+	    self.msisdn = dn
+	    self.response_topic = response
+	    self.value=value
+	     #super(cmd,body_to_xml)
+	      super(cmd)
+	  end
+	#  def body_to_xml
+	 #     msg_xml = REXML::Element.new 'billing_message'
+  #      msg_xml =self.add_elements(msg_xml)
+   #     msg_xml.to_s
+   # end
+    def self.load_xml(body)
+      doc=REXML::Document.new(body)
+      dn=REXML::XPath.first(doc, "//msisdn").text
+      action=REXML::XPath.first(doc, "//action").text
+      value=REXML::XPath.first(doc, "//value").text
+      topic=REXML::XPath.first(doc, "//response_topic").text
+        cmd = REXML::XPath.first(doc, "//__stomp_msg_command").text
+      sms=BillingWebService::BillingMessage.new(cmd,topic,dn,action,value)
+    end
+	end
+end
